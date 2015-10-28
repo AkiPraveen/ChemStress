@@ -125,7 +125,7 @@ h1.subpageTitle {
 #molarmass {
 	height:100%;
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.97);
 	position:absolute;
 	left:0;
 	top:-100%;
@@ -134,7 +134,7 @@ h1.subpageTitle {
 #chemresearch {
 	height:100%;
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.97);
 	position:absolute;
 	left:0;
 	top:-100%;
@@ -143,7 +143,7 @@ h1.subpageTitle {
 #reactionpredictor {
 	height:100%;
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.97);
 	position:absolute;
 	left:0;
 	top:-100%;
@@ -152,7 +152,7 @@ h1.subpageTitle {
 #nameconverter {
 	height:100%;
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.97);
 	position:absolute;
 	left:0;
 	top:-100%;
@@ -166,7 +166,7 @@ image.bottomArrow {
 }
 #scrollUpThree {
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.5);
 	height:40px;
 	float:down;
 	text-align:center;
@@ -183,7 +183,7 @@ image.bottomArrow {
 
 #scrollUpOne {
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.5);
 	height:40px;
 	float:down;
 	text-align:center;
@@ -200,7 +200,7 @@ image.bottomArrow {
 
 #scrollUpTwo {
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.5);
 	height:40px;
 	float:down;
 	text-align:center;
@@ -217,7 +217,7 @@ image.bottomArrow {
 
 #scrollUpFour {
 	width:100%;
-	background-color:#e74c3c;
+	background-color:rgba(231, 76, 60,0.5);
 	height:40px;
 	float:down;
 	text-align:center;
