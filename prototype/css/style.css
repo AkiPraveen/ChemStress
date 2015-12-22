@@ -1,0 +1,22 @@
+body {
+	background-color: #e74c3c;
+}
+input {
+	width: 50%;
+	left: 25%;
+	position: absolute;
+	top: 45%;
+	border-radius: 28.5px;
+	border: 1px solid white;
+	background-color: transparent;
+	font-size: 20px;
+	padding: 15px;
+	transition: all 0.15s;
+	-webkit-transition: all 0.15s;
+	color: white;
+}
+input:focus {
+	color: #e74c3c;
+	background-color: white;
+	outline: none;
+}

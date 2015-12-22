@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculation Prototype</title>
+<link rel="stylesheet" type="text/css" href="css/calculator_style.css">	
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="js/calculate.js"></script>
+<script type="text/javascript" src="js/calculator_script.js"></script>
+<script type="text/javascript" src="js/transit.js"></script>
+<script type="text/javascript" src="js/signdig.js"></script>
+</head>
+<body>
+<!--div title-->
+	<h3 class="page_header">Calculator Prototype</h3>
+<!--end of title-->
+
+<!--main input region, for commands and appropriate chemical reactions-->
+	<input class="student_input"></input>
+<!--end main input region-->
+
+<!--dropdown input menu after a valid chemical reaction is entered-->
+	<div id="enter_query">
+		<h3 class = "page_header">Your Input Please</h3>
+		<input class = "mini_input" id="desired_input"></input>
+		<input class = "mini_input" id="desired_output"></input>
+		<h4 id="stoic_calculation_final"></h4>
+	</div>
+<!--end of dropdown input menu-->
+
+<!--extraneous garbage, necessary for calculation plugin-->
+		<form style="display: none;" action="javascript:" onsubmit="calculate(document.forms[0].elements[0].value)"><input type="text"><input value="Calculate" onclick="calculate(document.forms[0].elements[0].value)" type="button"> <input onclick="document.forms[1].elements[0].value=''" value="Clear" type="button"></form>
+
+		<form style="display: none;"> <textarea cols="60" rows="20"></textarea></form>
+<!--garbage ends here-->
+</body>
+</html>
