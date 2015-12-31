@@ -33,6 +33,11 @@ $(document).ready(function() {
 								fireFunction(desired_input, desired_output);
 							}
 						});
+						$('#desired_input').keydown(function(event) {
+							if(event.which == 13) {
+								$('#desired_output').focus();
+							}
+						});
 					} else if(event.which == 8) {
 						uncascade($('#enter_query'), $('#enter_query h3'), $('#desired_input'), $('#desired_output'));						
 						$('#desired_input').val("");
@@ -62,7 +67,7 @@ $(document).ready(function() {
 		});
 		header.fadeIn(18);
 		input1.delay(32).fadeIn();
-		input1.attr("placeholder", "example: mass O2");
+		input1.attr("placeholder", "example: 0.9mol O2");
 		input2.attr("placeholder", "example: volume H2O");
 		input2.delay(32).fadeIn();
 		input1.focus();
@@ -352,6 +357,51 @@ $(document).ready(function() {
 		return mole;
 	}
 	function printFunction(calculation, suffix, chemical) {
-		$('#stoic_calculation_final').text(calculation + suffix + " " + chemical);
+		if(!isNaN(calculation)) {
+			$('#stoic_calculation_final').html(calculation + suffix + " " + chemify(chemical));
+
+		} else {
+			$('#stoic_calculation_final').html("Invalid input.");
+		}
 	}
+
+		function chemify(str) {
+			var newStr = "";
+			var index = 0;
+			if(isNaN(str.charAt(0)) == false) { //check for coefficient...
+				str = "0" + str;
+				var number = "";
+				var temp_index = index;
+				while(isNaN(str.charAt(temp_index)) == false && (temp_index < str.length)) {
+					number += str.charAt(temp_index);
+					temp_index++;
+					if(temp_index < str.length - 1 && isNaN(str.charAt(temp_index + 1)) == false) {
+						index++;
+					}
+				}
+				newStr += number;
+				index++;				
+			}
+
+			for(var i = index; i<str.length; i++) { //loop through and analyze every char of the String chemical
+				var character = str.charAt(i);
+				if(isNaN(character) == false) {
+					var number = "";
+					var temp_index = i;
+					while(isNaN(str.charAt(temp_index)) == false && (temp_index < str.length)) {
+						if(temp_index < str.length - 1 && isNaN(str.charAt(temp_index + 1)) == false) {
+							i++;
+						}
+						number += str.charAt(temp_index);
+						temp_index++;
+					}
+					newStr += "<sub>" + number + "</sub>";
+				} else {
+					newStr += character;
+				}
+			}
+
+
+			return newStr;
+		}	
 });
