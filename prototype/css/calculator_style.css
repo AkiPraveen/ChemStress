@@ -1,9 +1,9 @@
 @font-face {
-	src: url('../../chem stress/assets/fonts/Lato/Lato-Medium.woff');
+	src: url('../../assets/fonts/Lato/Lato-Medium.woff');
 	font-family: Lato;
 }
 @font-face {
-	src: url('../../chem stress/assets/fonts/Lato/Lato-Light.woff');
+	src: url('../../assets/fonts/Lato/Lato-Light.woff');
 	font-family: Lato-Light;
 }
 body {
