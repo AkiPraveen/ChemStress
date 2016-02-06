@@ -1,12 +1,10 @@
+
 // Balances the given formula string and sets the HTML output on the page. Returns nothing.
-function balance(formulaStr) {
-	// Clear output
-	setMessage("");
+function balance(formulaStr, balancedElem, codeOutElem) {
 	var balancedElem = document.getElementById("balanced");
 	var codeOutElem  = document.getElementById("codeOutput");
-	removeAllChildren(balancedElem);
-	removeAllChildren(codeOutElem);
-	appendText(" ", codeOutElem);
+
+	// appendText(" ", codeOutElem);
 	
 	// Parse equation
 	var eqn;
@@ -14,10 +12,10 @@ function balance(formulaStr) {
 		eqn = parse(formulaStr);
 	} catch (e) {
 		if (typeof e == "string") {  // Simple error message string
-			setMessage("Syntax error: " + e);
+			return ("Syntax error: " + e);
 			
 		} else if ("start" in e) {  // Error message object with start and possibly end character indices
-			setMessage("Syntax error: " + e.message);
+			return "Syntax error: " + e.message;
 			
 			var start = e.start;
 			var end = "end" in e ? e.end : e.start;
@@ -38,19 +36,22 @@ function balance(formulaStr) {
 			}
 			
 		} else {
-			setMessage("Assertion error");
+			return "Assertion error";
 		}
 		return;
 	}
 	
+
 	try {
 		var matrix = buildMatrix(eqn);                // Set up matrix
 		solve(matrix);                                // Solve linear system
 		var coefs = extractCoefficients(matrix);      // Get coefficients
 		checkAnswer(eqn, coefs);                      // Self-test, should not fail
-		balancedElem.appendChild(eqn.toHtml(coefs));  // Display balanced equation
+		// console.log(eqn.toHtml(coefs));
+		return (eqn.toHtml(coefs));
+		// console.log(eqn.toHtml(coefs));  // Display balanced equation
 	} catch (e) {
-		setMessage(e.toString());
+		return (e.toString());
 	}
 }
 
@@ -856,11 +857,11 @@ Array.prototype.clone = Array.prototype.slice;
 
 
 // Sets the page's message element to the given string. Returns nothing.
-function setMessage(str) {
-	var messageElem = document.getElementById("message");
-	removeAllChildren(messageElem);
-	appendText(str, messageElem);
-}
+// function return (str) {
+// 	var messageElem = document.getElementById("message");
+// 	removeAllChildren(messageElem);
+// 	appendText(str, messageElem);
+// }
 
 
 // Removes all the children of the given DOM node. Returns nothing.

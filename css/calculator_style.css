@@ -1,14 +1,18 @@
+/**/
 @font-face {
 	src: url('../../assets/fonts/Lato/Lato-Medium.woff');
 	font-family: Lato;
 }
 @font-face {
-	src: url('../../assets/fonts/Lato/Lato-Light.woff');
+	src: url('../assets/fonts/Lato/Lato-Light.woff');
 	font-family: Lato-Light;
 }
 body {
 	background-color: #e74c3c;
 	font-family: Lato;
+}
+input {
+	cursor: default;
 }
 .page_header {
 	text-align: center;
@@ -20,9 +24,9 @@ body {
 .student_input {
 	position: absolute;
 	width: 70%;
-	left: 13.5%;	
+	left: 14.25%;	
 	font-family: Lato-Light;
-	top: 40%;
+	top: 30%;
 	border: 1.5px solid white;
 	background: transparent;
 	border-radius: 28.5px;
@@ -52,15 +56,15 @@ body {
 	font-size: 40px;
 	color: #95A5A6;
 }
-#enter_query {
+.enter_query {
 	position: absolute;
 	width: 40%;
 	left: 30%;
-	top: 52.5%;
+	top: 42.5%;
 	background-color: #EEEEEE;
 	height: 0px;
 }
-#enter_query h3 {
+.enter_query h3 {
 	display: none;
 	margin-top: 20px;
 	font-size: 35px;
@@ -89,9 +93,28 @@ body {
 .mini_input::-webkit-input-placeholder {
 	color: white;
 }
-#stoic_calculation_final {
+#stoic_reaction_final {
 	text-align: center;
 	color: #e74c3c;
-	font-size: 25px;
+	font-size: 15px;
 	font-family: Lato-Light;
+	margin-bottom: -25px;
+}
+#stoic_calculation_final {
+	margin-bottom: 2px;
+	text-align: center;
+	color: #e74c3c;
+	font-size: 20px;
+	font-family: Lato-Light;
+}
+.output {
+	font-family: Lato-Light;
+	color: #ecf0f1;
+	cursor: default;
+	font-size: 35px;
+	position: absolute;
+	text-align: center;
+	width: 25%;
+	left: 37.5%;
+	top: 55%;
 }

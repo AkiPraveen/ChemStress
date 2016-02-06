@@ -12,20 +12,25 @@
 					c. perform multiplication
 					d. answer appears below on screen
  */
- function stringExists(target, input) {
- 	return (input.indexOf(target) > -1);
+ function stringExists(target, input1) {
+ 	return (input1.indexOf(target) > -1);
  }
-
+var input = "";
 //acting as main method for execution...
 $(document).ready(function() {
+
 	$('body').keydown(function(event) {
 		if(event.which == 13) {
-			var input = $('.student_input').val();
+			input = $('#stoic_input').val();
 			if(stringExists("stoic", input)) {
-				flipInput($('.student_input'));
+				flipInput($('.student_input'), "Enter reaction, or reactants if uncertain");
 				$('.student_input').keydown(function(event) {
 					if(event.which == 13) {
 						cascade($('#enter_query'), $('#enter_query h3'), $('#desired_input'), $('#desired_output'));						
+						input = $('.student_input').val();
+						input = balance(input);
+						// alert(input);
+						$('#stoic_reaction_final').html(input);
 						$('#desired_output').keydown(function(event) {
 							if(event.which == 13) {
 								var desired_input = $('#desired_input').val();
@@ -44,18 +49,26 @@ $(document).ready(function() {
 						$('#desired_output').val("");
 					}
 				});
+			} else if (stringExists("balance", input)) {
+				flipInput($('.student_input'), "Enter unbalanced, no need for any coefficients at all.");				
+				$('.student_input').keydown(function(event) {
+					if(event.which == 13) {
+						var formulaStr = $(this).val();
+						$('.output').html(balance(formulaStr));
+					}
+				});
 			}
 		}
 	});
 
 	/*front end methods for ease of readability in document.ready() function*/
-	function flipInput(input) {
+	function flipInput(input, placeholder) {
 		input.transition({
 			perspective: '2000px',
 			rotateX: '400deg'
 		});
 		input.val('');
-		input.delay(15).attr("placeholder", "Enter reaction, or reactants if uncertain");
+		input.delay(15).attr("placeholder", placeholder);
 		input.delay(20).transition({
 			perspective: '2000px',
 			rotateX: '360deg'
@@ -176,9 +189,12 @@ $(document).ready(function() {
 		var chemical_output = getChemical(desired_output);
 
 		//this gives us the moles present next to the chemicals in the equation, and based on that, the molar ratio, input : output
-		var input_moles_theoretical = getMole(chemical_input, $('.student_input').val());
-		var output_moles_theoretical = getMole(chemical_output, $('.student_input').val());
+		var input_moles_theoretical = getMole(chemical_input, $('#stoic_reaction_final').text());
+		// alert(input_moles_theoretical);
+		var output_moles_theoretical = getMole(chemical_output, $('#stoic_reaction_final').text());
+		// alert(output_moles_theoretical);
 		var mol_ratio = input_moles_theoretical/output_moles_theoretical;
+
 
 		//now we perform calculations according to dimensional analysis
 		var returner = num_moles / mol_ratio; //we get the number of input moles and divide by the mol ratio to get the output
@@ -282,8 +298,8 @@ $(document).ready(function() {
 		var chemical_output = getChemical(desired_output);
 
 		//this gives us the moles present next to the chemicals in the equation, and based on that, the molar ratio, input : output
-		var input_moles_theoretical = getMole(chemical_input, $('.student_input').val());
-		var output_moles_theoretical = getMole(chemical_output, $('.student_input').val());
+		var input_moles_theoretical = getMole(chemical_input, $('#stoic_reaction_final').text());
+		var output_moles_theoretical = getMole(chemical_output, $('#stoic_reaction_final').text());
 		var mol_ratio = input_moles_theoretical/output_moles_theoretical;
 
 		//now we perform calculations according to dimensional analysis
@@ -342,6 +358,24 @@ $(document).ready(function() {
 			return returner;
 		}
 	}
+	function getMoleImproved(chemical, reaction) {
+		var mole;
+		var chemicals = reaction.split(" ");
+		var coefficients = [];
+
+		//copies over the chemicals to an array
+		for (var i = 0; i < chemicals.length; i++) {
+			if(chemicals[i].indexOf('→') != -1 || chemicals[i] == "+") {
+				chemicals.splice(i,1);
+			}
+		}
+
+
+		for (var i = 0; i < chemicals.length; i++) {
+		}
+
+
+	}
 	function getMole(chemical, reaction) {
 		var mole;
 		if(reaction.indexOf(chemical) == 0) {
@@ -354,15 +388,11 @@ $(document).ready(function() {
 				mole = parseInt(coefficient);
 			}
 		}
+
 		return mole;
 	}
 	function printFunction(calculation, suffix, chemical) {
-		if(!isNaN(calculation)) {
-			$('#stoic_calculation_final').html(calculation + suffix + " " + chemify(chemical));
-
-		} else {
-			$('#stoic_calculation_final').html("Invalid input.");
-		}
+		$('#stoic_calculation_final').html(calculation + suffix + " " + chemify(chemical));
 	}
 
 		function chemify(str) {
