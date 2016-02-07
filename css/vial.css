@@ -1,14 +1,14 @@
 /*This file stores the code for the vial, which has been drawn into an html canvas*/
 body {
 	background-repeat: no-repeat; 
-	background-size: 510px 390px;
+	background-size: 520px 400px;
 	background-attachment: fixed;
 	background-position:  center 90px;
     -webkit-animation-name: animation;  
     -webkit-animation-direction: normal; /* not "linear" */
 	-webkit-animation-fill-mode:forwards;
     -webkit-animation-iteration-count: infinite;  
-    -webkit-animation-duration: 0.7s; 
+    -webkit-animation-duration: 0.5s; 
     -webkit-animation-timing-function:steps(3, end);
 }
 @keyframes animation {
