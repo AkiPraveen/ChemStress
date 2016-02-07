@@ -16,12 +16,12 @@
             
 
 
-
+            // working for now
 
             
             var query = {
                 //url: 'http://google.com/search?q=+' + chemName + '+sds+flinnsci+pdf',
-                url: 'https://www.google.com/search?hl=en&as_q=sds&as_epq=' + chemName + '&as_oq=safety+data+sheet&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=all&as_sitesearch=flinnsci.com&as_occt=any&safe=images&as_filetype=pdf&as_rights=',
+                url: 'https://www.google.com/search?hl=en&as_q=sds&as_epq=' + chemName + 'Benzene&as_oq=safety+data+sheet&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=all&as_sitesearch=flinnsci.com&as_occt=any&safe=images&as_filetype=pdf&as_rights=',
                 type: 'html',
                 selector: 'cite',
                 extract: 'text'
