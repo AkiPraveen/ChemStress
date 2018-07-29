@@ -3,3 +3,8 @@ A novel application that aims to aid *students* and people in general comprehend
 
 # Built With
 JQuery, Noodle.js
+
+# Authors
+Audrey Hou
+Akilesh Praveen
+Deeptanshu Sethi
