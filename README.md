@@ -5,6 +5,6 @@ A novel application that aims to aid *students* and people in general comprehend
 JQuery, Noodle.js
 
 # Authors
-Audrey Hou
-Akilesh Praveen
+Audrey Hou, 
+Akilesh Praveen, 
 Deeptanshu Sethi
